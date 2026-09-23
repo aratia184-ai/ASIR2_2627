@@ -1,4 +1,5 @@
-Las formas posibles de conectarse a la red en una virtual box son: 
+Las formas posibles de conectarse a la red en una virtual box son:
+
 NAT --> Asigna una IP de forma automática y accede a Internet utilizando la conexión del equipo anfitrión.
 
 Adaptador puente --> La máquina virtual se conecta directamente a la red física a través del adaptador de red del equipo anfitrión.
