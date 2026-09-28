@@ -13,3 +13,14 @@ Controlador genérico --> Permite utilizar un controlador de red genérico propo
 Red NAT --> Permite conectar varias máquinas virtuales a una misma red NAT. Las máquinas virtuales pueden comunicarse entre sí y acceder a Internet mediante la conexión del anfitrión, mientras que desde la red externa no se puede acceder directamente a ellas salvo que se configuren reglas de redirección de puertos.
 
 Red en la nube --> Permite conectar la máquina virtual a una red basada en servicios de nube compatibles con VirtualBox. Está destinada a configuraciones de infraestructura en la nube y, dependiendo de la versión de VirtualBox y del proveedor, puede tener características experimentales.
+
+```yaml
+ip a
+```
+
+Se consultan las interfaces de red del sistema Ubuntu.
+Interfaz de bucle local (lo) (127.0.0.1)
+Interfaz de red NAT enp0s3 (IP 10.0.2.15)
+Interfaz en adaptador
+
+
