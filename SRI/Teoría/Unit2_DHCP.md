@@ -45,7 +45,7 @@ Verificar la IP asignada por el servidor (172.16.5.129)
 ```
 ip a
 ```
-WINDOWS SERVER 2022 (SERVIDOR) Y UBUNTU (CLIENTE)
+WINDOWS SERVER 2022 (SERVIDOR) Y UBUNTU (CLIENTE):
 
 SERVIDOR
 
@@ -58,3 +58,24 @@ SERVIDOR
 4. Crear y activar el ámbito IPv4 (Red_Clientes_Ubuntu) Administrador del servidor -> Herramientas -> DHCP IPv4 (clic derecho) -> Ámbito nuevo... Rango: 172.16.5.122 a 172.16.5.129 Máscara: 255.255.255.0 (/24) Activar ámbito: Sí
 
 5. Permitir peticiones ICMPv4 (Ping) en el Firewall de Windows Herramientas -> Windows Defender Firewall con seguridad avanzada -> Reglas de entrada Buscar "Archivos e impresoras compartidos (petición eco: ICMPv4 de entrada)" -> Propiedades -> Habilitar regla
+
+CLIENTE
+
+1. Instalar cliente DHCP tradicional
+```
+sudo apt update
+sudo apt install isc-dhcp-client
+```
+2. Solicitar y renovar la dirección IP mediante DHCP
+```
+sudo dhclient -r
+sudo dhclient
+```
+3. Verificar la IP dinámica asignada por el servidor (172.16.5.193)
+```
+ip a
+```
+4. Comprobar conectividad con el servidor Windows Server
+```
+ping -c 4 172.16.5.129
+```
