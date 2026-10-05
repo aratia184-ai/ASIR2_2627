@@ -41,7 +41,7 @@ Se activa el servicio SSH para que se inicie automáticamente en el arranque y s
 
 Conexión remota por SSH: Desde la consola de Windows, se establece conexión SSH hacia la máquina virtual ejecutando
 ```
-ssh raul@192.168.56.101
+ssh antonio-jos@172.16.5.120
 ```
 Aceptación de la huella digital: Se confirma la autenticidad del host escribiendo yes para añadir la clave ED25519 al archivo known_hosts de Windows e introduciendo la contraseña del usuario. Acceso y comprobación de repositorios: Una vez dentro de la sesión de Ubuntu vía SSH, se ejecutan sudo apt update y sudo apt upgrade.
 ```
@@ -69,10 +69,10 @@ echo "# ASIR2_2627" > README.md.
 ```
 Primer intento de commit: Se añade el archivo al área de preparación con git add . y se ejecuta git commit -m "Primer commit". Git rechaza el commit por falta de configuración de identidad del autor. Configuración del usuario de Git: Se definen las credenciales globales:
 ```
-git config --global user.name "Raúl Caño Puerto"
+git config --global user.name "Antonio José Ratia Aranega"
 ```
 ```
-git config --global user.email "raulguadix@gmail.com"
+git config --global user.email "aratia184@gmail.com"
 ```
 Creación exitosa del commit: Se ejecuta nuevamente
 ```
@@ -82,4 +82,4 @@ git commit -m "Primer commit"
 ```
 gh repo create ASIR2_2627 --public --source=. --remote=origin --push
 ```
-Resultado: Se crea con éxito el repositorio público raulguadix-sys/ASIR2_2627 en GitHub, se vincula el origen remoto origin y se sube el código local mediante el push inicial de la rama master.
+Resultado: Se crea con éxito el repositorio público aratia184-sys/ASIR2_2627 en GitHub, se vincula el origen remoto origin y se sube el código local mediante el push inicial de la rama master.
