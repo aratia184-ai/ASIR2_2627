@@ -22,8 +22,9 @@ Se consultan las interfaces de red del sistema Ubuntu.
 Interfaz de bucle local (lo) (127.0.0.1)
 Interfaz de red NAT enp0s3 (IP 10.0.2.15)
 Interfaz en adaptador
-
+```
 sudo apt update y sudo apt upgrade
+```
 Se actualizan los índices de paquetes del sistema operativo. El sistema indica que no hay actualizaciones pendientes instalables por políticas de phasing.
 
 sudo apt install openssh-server 
