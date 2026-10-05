@@ -45,3 +45,16 @@ Verificar la IP asignada por el servidor (172.16.5.129)
 ```
 ip a
 ```
+WINDOWS SERVIDOR Y UBUNTU CLIENTE
+
+SERVIDOR
+
+1. Configurar la interfaz de red con IP estática (Ethernet -> 172.16.5.129/24) Administrador del servidor -> Servidor local -> Ethernet -> Propiedades -> IPv4 Dirección IP: 172.16.5.129 Máscara de subred: 255.255.255.0
+
+2. Instalar el rol de Servidor DHCP Administrador del servidor -> Administrar -> Agregar roles y características Instalación basada en características o en roles -> Seleccionar Servidor -> Marcar "Servidor DHCP" -> Instalar
+
+3. Completar la configuración post-instalación y autorizar el servicio Administrador del servidor -> Notificaciones (Icono Bandera) -> Completar configuración de DHCP -> Autorizar
+
+4. Crear y activar el ámbito IPv4 (Red_Clientes_Ubuntu) Administrador del servidor -> Herramientas -> DHCP IPv4 (clic derecho) -> Ámbito nuevo... Rango: 172.16.5.122 a 172.16.5.129 Máscara: 255.255.255.0 (/24) Activar ámbito: Sí
+
+5. Permitir peticiones ICMPv4 (Ping) en el Firewall de Windows Herramientas -> Windows Defender Firewall con seguridad avanzada -> Reglas de entrada Buscar "Archivos e impresoras compartidos (petición eco: ICMPv4 de entrada)" -> Propiedades -> Habilitar regla
