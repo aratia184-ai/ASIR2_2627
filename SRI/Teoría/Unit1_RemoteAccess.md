@@ -26,6 +26,7 @@ Comprobarlo con:
 dir $env:USERPROFILE\.ssh
 ```
 3. Mostrar la clave pública
+
 En PowerShell:
 ```
 type $env:USERPROFILE\.ssh\id_ed25519.pub
