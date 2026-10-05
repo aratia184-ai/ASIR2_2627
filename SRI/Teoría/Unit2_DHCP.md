@@ -1,4 +1,6 @@
-SERVIDOR:
+UBUNTU SERVIDOR-CLIENTE:
+
+SERVIDOR
 
 1. Identificar interfaz de red y su IP estática (enp0s3 -> 172.16.5.120/24)
 ```
