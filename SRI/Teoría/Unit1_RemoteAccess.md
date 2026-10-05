@@ -5,6 +5,7 @@ Configuración de acceso SSH sin contraseña desde Windows a Ubuntu
 dir $env:USERPROFILE\.ssh
 ```
 2. Crear una clave SSH en Windows
+
 Ejecutar:
 ```
 ssh-keygen -t ed25519
