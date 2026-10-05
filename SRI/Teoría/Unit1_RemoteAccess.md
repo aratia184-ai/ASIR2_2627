@@ -36,13 +36,13 @@ Copiar toda la línea que aparece, que empieza por:
 ssh-ed25519
 ```
 4. Conectarse al servidor Ubuntu
-Desde PowerShell:
+desde PowerShell:
 ```
 ssh antonio-jos@172.16.5.120
 ```
 Introducir la contraseña del usuario antonio-jos.
 
-5. Crear la carpeta SSH en Ubuntu En el servidor Ubuntu:
+5. Crear la carpeta SSH en Ubuntu en el servidor Ubuntu:
 ```
 mkdir -p ~/.ssh
 ```
@@ -66,7 +66,7 @@ Salir:
 Ctrl + X
 ```
 7. Dar permisos al archivo
-En Ubuntu:
+en Ubuntu:
 ```
 chmod 600 ~/.ssh/authorized_keys
 ```
@@ -75,6 +75,7 @@ Y:
 chown -R $USER:$USER ~/.ssh
 ```
 8. Reiniciar el servicio SSH
+
 Ejecutar:
 ```
 sudo systemctl restart ssh
@@ -86,7 +87,7 @@ Introducir la contraseña de Ubuntu cuando la solicite.
 exit
 ```
 10. Comprobar el acceso sin contraseña
-Desde Windows PowerShell:
+desde Windows PowerShell:
 ```
 ssh antonio-jos@172.16.5.120
 ```
