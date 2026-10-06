@@ -67,3 +67,95 @@ Esta línea de declaración de subred está comentada. Sirve para definir un ran
 #}
 ```
 Cierra el bloque de la subred anterior, también comentado. 
+
+Bloque de Subred Básica 1:
+```
+# This is a very basic subnet declaration.
+```
+Comentario que indica que el siguiente bloque es un ejemplo de declaración de subred muy básico.   
+```
+#subnet 10.254.239.0 netmask 255.255.255.224 {
+```
+Declara una subred (actualmente comentada) con dirección de red 10.254.239.0 y máscara de subred 255.255.255.224 (/27).   
+```
+# range 10.254.239.10 10.254.239.20;
+```
+Define el rango de direcciones IP dinámicas que el servidor asignará a los clientes, desde la 10.254.239.10 hasta la 10.254.239.20.   
+```
+# option routers rtr-239-0-1.example.org, rtr-239-0-2.example.org;
+```
+Asigna las puertas de enlace predeterminadas (routers) que usarán los equipos de esta subred.   
+```
+#}
+```
+Cierra el bloque de esta subred.   
+
+Bloque para Clientes BOOTP:
+
+"# This declaration allows BOOTP clients to get dynamic addresses", y la línea siguiente comentan que este bloque permite a equipos antiguos basados en BOOTP obtener direcciones dinámicas, aunque no es muy recomendable.   
+```
+#subnet 10.254.239.32 netmask 255.255.255.224 {
+```
+Declara otra subred para el segmento 10.254.239.32 con máscara 255.255.255.224.   
+```
+# range dynamic-bootp 10.254.239.40 10.254.239.60;
+```
+Establece un rango de IPs reservadas específicamente para asignación dinámica mediante el protocolo BOOTP (del 40 al 60).
+```
+# option broadcast-address 10.254.239.31;
+```
+Define la dirección de difusión (broadcast) para esta subred.   
+```
+# option routers rtr-239-32-1.example.org;
+```
+Especifica el router o puerta de enlace para los clientes de esta subred.   
+```
+#}
+```
+Cierra el bloque de la subred BOOTP.   
+
+Bloque de Subred Interna con Opciones Personalizadas:
+```
+# A slightly different configuration for an internal subnet.
+```
+Comentario que introduce una configuración ligeramente distinta orientada a una red interna.   
+```
+#subnet 10.5.5.0 netmask 255.255.255.224 {
+```
+Inicia la declaración de la subred interna 10.5.5.0 con máscara 255.255.255.224.   
+```
+# range 10.5.5.26 10.5.5.30;
+```
+Rango de IPs asignables a clientes (del 26 al 30).   
+```
+# option domain-name-servers ns1.internal.example.org;
+```
+Servidor DNS específico para esta subred interna.   
+```
+# option domain-name "internal.example.org";
+```
+Nombre de dominio específico (internal.example.org) para los equipos de esta red.   
+```
+# option subnet-mask 255.255.255.224;
+```
+Reitera la máscara de subred explícitamente para los clientes.   
+```
+# option routers 10.5.5.1;
+```
+IP del router principal para esta red (10.5.5.1).   
+```
+# option broadcast-address 10.5.5.31;
+```
+Dirección de broadcast para esta subred.   
+```
+# default-lease-time 600; y # max-lease-time 7200;
+```
+Sobrescriben los tiempos de concesión de IP (10 minutos por defecto, 2 horas máximo) aplicados de forma exclusiva a esta subred.   
+```
+#}
+```
+Cierra el bloque de la subred interna.   
+
+Declaración de Hosts Especiales:
+
+Las últimas líneas comentadas (# Hosts which require special configuration options can be listed in...) explican que los equipos que necesiten configuraciones especiales (como una dirección IP fija o estática asociada a su dirección MAC) se pueden declarar mediante bloques de tipo host. Si no se especifica una IP fija, se les asigna una dinámica, pero conservando las opciones específicas de esa declaración de host.
