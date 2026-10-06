@@ -17,7 +17,7 @@ sudo nano /etc/dhcp/dhcpd.conf
 4. Dentro del archivo añadimos al final del todo la siguiente línea.
 ```
 subnet 172.16.5.0 netmask 255.255.255.0 {
- range 172.16.5.150 172.16.5.200;
+ range 172.16.5.122 172.16.5.129;
  default-lease-time 600;
  max-lease-time 7200;
 }
