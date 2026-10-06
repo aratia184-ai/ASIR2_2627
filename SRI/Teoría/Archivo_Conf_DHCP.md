@@ -1,4 +1,4 @@
-Encabezado y Comentarios Generales
+Encabezado y Comentarios Generales:
 ```
 # dhcpd.conf
 ```
@@ -8,7 +8,7 @@ Indica el nombre del archivo de configuración. En Linux, todo lo que empieza co
 ```   
 Son líneas vacías o comentarios informativos que explican que este es un archivo de ejemplo para el servidor ISC DHCP, advirtiendo además que si existe un archivo alternativo en "/etc/ltsp/dhcpd.conf", este último tendrá prioridad.
 
-Opciones Globales Comunes
+Opciones Globales Comunes:
 ```
 # option definitions common to all supported networks...
 ```
@@ -22,7 +22,7 @@ option domain-name-servers ns1.example.org, ns2.example.org;
 ```
 Especifica las direcciones o nombres de los servidores DNS (ns1.example.org y ns2.example.org) que utilizarán los clientes para resolver nombres de dominio.   
 
-Tiempos de Concesión (Lease Times)
+Tiempos de Concesión (Lease Times):
 ```
 default-lease-time 600;
 ```
@@ -32,7 +32,7 @@ max-lease-time 7200;
 ```
 Define el tiempo máximo (en segundos) que el servidor puede otorgar una IP si el cliente la solicita expresamente. En este caso, 7200 segundos (2 horas).
 
-Actualizaciones Dinámicas de DNS (DDNS)
+Actualizaciones Dinámicas de DNS (DDNS):
 
 Comentarios explicativos sobre el parámetro "ddns-update-style", que controla si el servidor DHCP debe intentar actualizar automáticamente los registros DNS cuando se asigna una IP.   
 ```
@@ -40,7 +40,7 @@ ddns-update-style none;
 ```
 Desactiva por completo las actualizaciones dinámicas de DNS (none), imitando el comportamiento de las versiones antiguas de DHCP.   
 
-Servidor Autoritativo
+Servidor Autoritativo:
 
 Comentarios que indican cómo configurar si este servidor es el oficial o principal de la red local.
 ```
@@ -48,7 +48,7 @@ Comentarios que indican cómo configurar si este servidor es el oficial o princi
 ```
 Al estar precedido por #, se encuentra comentado (desactivado). Si se descomentara (quitando el #), le indicaría a la red que este es el servidor DHCP oficial, encargado de rechazar configuraciones erróneas de clientes rápidamente.   
 
-Registro de Eventos (Logs)
+Registro de Eventos (Logs):
 
 Comentarios orientados a la redirección de los mensajes de registro (logs) del servidor hacia un archivo o facilidad específica del sistema de logs (syslog).   
 ```
@@ -56,7 +56,7 @@ Comentarios orientados a la redirección de los mensajes de registro (logs) del 
 ```
 Está comentado. Si se activara, enviaría los registros del servidor DHCP a la facilidad local7 del sistema de bitácoras.
 
-Declaración de Subred (Subnet)
+Declaración de Subred (Subnet):
 
 Comentarios que explican que declarar una subred sin ofrecer servicio en ella ayuda al servidor a comprender la topología de la red.   
 ```
