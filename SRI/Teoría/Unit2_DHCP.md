@@ -81,7 +81,7 @@ Habilitar regla
 
 CLIENTE
 
-1. Instalar cliente DHCP tradicional
+1. Instalar DHCP cliente
 ```
 sudo apt update
 sudo apt install isc-dhcp-client
@@ -91,11 +91,11 @@ sudo apt install isc-dhcp-client
 sudo dhclient -r
 sudo dhclient
 ```
-3. Verificar la IP dinámica asignada por el servidor (172.16.5.193)
+3. Verificar la IP dinámica asignada por el servidor (172.16.5.127)
 ```
 ip a
 ```
 4. Comprobar conectividad con el servidor Windows Server
 ```
-ping -c 4 172.16.5.129
+ping -c 4 172.16.5.127
 ```
