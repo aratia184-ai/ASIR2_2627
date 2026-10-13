@@ -32,7 +32,7 @@ Para realizar una instalación y configuración completa de un servidor DNS (BIN
 
 
 
-SERVIDOR
+# INSTALACIÓN Y CONFIGURACIÓN DEL DNS (SERVIDOR)
 
 # 1. Instalar BIND9:
 
@@ -113,7 +113,7 @@ Cómo verificar: Comprueba que responda a las consultas ejecutando "dig @127.0.0
 
 
 
-CLIENTE
+# CONFIGURACIÓN DNS (CLIENTE)
 
 Para configurar un equipo con Ubuntu como cliente para que utilice tu servidor DNS (el de la máquina virtual), puedes hacerlo de forma gráfica o mediante la línea de comandos (Netplan). Aquí tienes el método más rápido y estándar usando la terminal:
 
