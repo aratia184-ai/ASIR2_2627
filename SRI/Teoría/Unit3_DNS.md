@@ -30,6 +30,8 @@ Cuando escribes una dirección web en tu navegador, ocurre lo siguiente:
 
 Para realizar una instalación y configuración completa de un servidor DNS (BIND9) en una máquina virtual de Ubuntu, debes seguir un flujo ordenado que va desde la preparación hasta la prueba final.
 
+SERVIDOR
+
 # 1. Instalar BIND9:
 
 Actualiza los paquetes e instala BIND9 ejecutando en la terminal:
@@ -106,3 +108,45 @@ Reinicia el servicio BIND9 para aplicar toda la configuración:
 sudo systemctl restart bind9
 ```
 Cómo verificar: Comprueba que responda a las consultas ejecutando "dig @127.0.0.1 www.miservidor.local" y verificando que devuelva tu dirección IP en la sección de respuesta.
+
+CLIENTE
+
+Para configurar un equipo con Ubuntu como cliente para que utilice tu servidor DNS (el de la máquina virtual), puedes hacerlo de forma gráfica o mediante la línea de comandos (Netplan). Aquí tienes el método más rápido y estándar usando la terminal:
+
+# 1. Identificar la interfaz de red:
+
+Abre la terminal en tu cliente Ubuntu y ejecuta el siguiente comando para ver el nombre de tu conexión de red (por ejemplo, enp0s3 o wlan0):
+```
+ip route show default | awk '{print $5}'
+```
+Cómo verificar: El comando devolverá directamente el nombre de tu interfaz activa.
+
+# 2.Editar la configuración de Netplan:
+
+Ubuntu gestiona las redes mediante Netplan. Busca el archivo de configuración en /etc/netplan/ (suele tener un nombre como 01-netcfg.yaml o 50-cloud-init.yaml):
+```
+sudo nano /etc/netplan/01-netcfg.yaml
+```
+Cómo verificar: El editor se abrirá mostrando la configuración de red actual.
+
+# 3.Añadir la IP de tu servidor DNS:
+
+Modifica el archivo para agregar la sección nameservers apuntando a la dirección IP de tu servidor DNS virtual (por ejemplo, 192.168.1.50):
+```
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: true
+      nameservers:
+        addresses: [192.168.1.50]
+```
+Guarda los cambios (Ctrl + O, Enter) y sal (Ctrl + X).
+
+# 4.Aplicar los cambios de red:
+
+Aplica la nueva configuración ejecutando:
+```
+sudo netplan apply
+```
+Cómo verificar: Ejecuta resolvectl status y comprueba que en la sección de tu interfaz aparezca la IP de tu servidor DNS configurada correctamente.
