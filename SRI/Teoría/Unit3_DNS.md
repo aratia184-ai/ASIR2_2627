@@ -30,6 +30,8 @@ Cuando escribes una dirección web en tu navegador, ocurre lo siguiente:
 
 Para realizar una instalación y configuración completa de un servidor DNS (BIND9) en una máquina virtual de Ubuntu, debes seguir un flujo ordenado que va desde la preparación hasta la prueba final.
 
+
+
 SERVIDOR
 
 # 1. Instalar BIND9:
@@ -108,6 +110,8 @@ Reinicia el servicio BIND9 para aplicar toda la configuración:
 sudo systemctl restart bind9
 ```
 Cómo verificar: Comprueba que responda a las consultas ejecutando "dig @127.0.0.1 www.miservidor.local" y verificando que devuelva tu dirección IP en la sección de respuesta.
+
+
 
 CLIENTE
 
