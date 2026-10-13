@@ -27,3 +27,82 @@ Cuando escribes una dirección web en tu navegador, ocurre lo siguiente:
 - Es automático y rápido: Todo este proceso ocurre en milisegundos, por lo que ni lo notas.
 
 - Tipos de DNS públicos: Aunque tu operador te asigna uno por defecto, existen alternativas populares y gratuitas que suelen ser más rápidas o seguras, como Google (8.8.8.8) o Cloudflare (1.1.1.1).
+
+Para realizar una instalación y configuración completa de un servidor DNS (BIND9) en una máquina virtual de Ubuntu, debes seguir un flujo ordenado que va desde la preparación hasta la prueba final.
+
+# 1.Instalar BIND9:
+
+Actualiza los paquetes e instala BIND9 ejecutando en la terminal:
+```
+sudo apt update && sudo apt install bind9 bind9utils -y
+```
+Cómo verificar: Ejecuta sudo systemctl status bind9 y comprueba que el estado sea active (running).
+
+# 2.Configurar las opciones globales:
+
+Edita el archivo de opciones para configurar los reenviadores externos (por ejemplo, Cloudflare y Google):
+```
+sudo nano /etc/bind/named.conf.options
+```
+Añade o reemplaza el contenido por el siguiente bloque:
+```
+options {
+    directory "/var/cache/bind";
+    recursion yes;
+    forwarders {
+        1.1.1.1;
+        8.8.8.8;
+    };
+    dnssec-validation auto;
+    listen-on { any; };
+    listen-on-v6 { any; };
+};
+```
+Guarda el archivo (Ctrl + O, Enter) y sal (Ctrl + X).
+
+Cómo verificar: Ejecuta sudo named-checkconf sin que devuelva ningún error.
+
+# 3.Definir una zona local (Opcional):
+
+Si deseas crear tu propio dominio local (ej. miservidor.local), edita el archivo de zonas locales:
+```
+sudo nano /etc/bind/named.conf.local
+```
+Añade la siguiente estructura:
+```
+zone "miservidor.local" {
+    type master;
+    file "/etc/bind/db.miservidor.local";
+};
+```
+Guarda y cierra el archivo.
+
+# 4.Crear el archivo de registro de zona:
+
+Crea y edita el archivo de base de datos para tu dominio local basado en la plantilla por defecto:
+```
+sudo nano /etc/bind/db.miservidor.local
+```
+Modifica el contenido para que quede similar a esto (reemplaza 192.168.1.50 por la IP real de tu máquina virtual):
+```
+@   IN  SOA ns.miservidor.local. admin.miservidor.local. (
+              2026100801 ; Serial
+              600        ; Refresh
+              1800       ; Retry
+              604800     ; Expire
+              300 )      ; Negative Cache TTL
+
+@   IN  NS  ns.miservidor.local.
+@   IN  A   192.168.1.50
+ns  IN  A   192.168.1.50
+www IN  A   192.168.1.50
+```
+Cómo verificar: Valida la zona ejecutando sudo named-checkzone miservidor.local /etc/bind/db.miservidor.local (debe mostrar OK).
+
+# 5.Reiniciar y aplicar cambios:
+
+Reinicia el servicio BIND9 para aplicar toda la configuración:
+```
+sudo systemctl restart bind9
+```
+Cómo verificar: Comprueba que responda a las consultas ejecutando dig @127.0.0.1 www.miservidor.local y verificando que devuelva tu dirección IP en la sección de respuesta.
