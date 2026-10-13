@@ -36,7 +36,7 @@ Actualiza los paquetes e instala BIND9 ejecutando en la terminal:
 ```
 sudo apt update && sudo apt install bind9 bind9utils -y
 ```
-Cómo verificar: Ejecuta sudo systemctl status bind9 y comprueba que el estado sea active (running).
+Cómo verificar: Ejecuta "sudo systemctl status bind9" y comprueba que el estado sea "active" (running).
 
 # 2. Configurar las opciones globales:
 
@@ -60,7 +60,7 @@ options {
 ```
 Guarda el archivo (Ctrl + O, Enter) y sal (Ctrl + X).
 
-Cómo verificar: Ejecuta sudo named-checkconf sin que devuelva ningún error.
+Cómo verificar: Ejecuta "sudo named-checkconf" sin que devuelva ningún error.
 
 # 3. Definir una zona local (Opcional):
 
@@ -97,7 +97,7 @@ Modifica el contenido para que quede similar a esto (reemplaza 192.168.1.50 por 
 ns  IN  A   192.168.1.50
 www IN  A   192.168.1.50
 ```
-Cómo verificar: Valida la zona ejecutando sudo named-checkzone miservidor.local /etc/bind/db.miservidor.local (debe mostrar OK).
+Cómo verificar: Valida la zona ejecutando "sudo named-checkzone miservidor.local /etc/bind/db.miservidor.local" (debe mostrar OK).
 
 # 5. Reiniciar y aplicar cambios:
 
@@ -105,4 +105,4 @@ Reinicia el servicio BIND9 para aplicar toda la configuración:
 ```
 sudo systemctl restart bind9
 ```
-Cómo verificar: Comprueba que responda a las consultas ejecutando dig @127.0.0.1 www.miservidor.local y verificando que devuelva tu dirección IP en la sección de respuesta.
+Cómo verificar: Comprueba que responda a las consultas ejecutando "dig @127.0.0.1 www.miservidor.local" y verificando que devuelva tu dirección IP en la sección de respuesta.
