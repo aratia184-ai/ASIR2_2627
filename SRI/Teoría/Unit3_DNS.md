@@ -30,7 +30,7 @@ Cuando escribes una dirección web en tu navegador, ocurre lo siguiente:
 
 Para realizar una instalación y configuración completa de un servidor DNS (BIND9) en una máquina virtual de Ubuntu, debes seguir un flujo ordenado que va desde la preparación hasta la prueba final.
 
-# 1.Instalar BIND9:
+# 1. Instalar BIND9:
 
 Actualiza los paquetes e instala BIND9 ejecutando en la terminal:
 ```
@@ -38,7 +38,7 @@ sudo apt update && sudo apt install bind9 bind9utils -y
 ```
 Cómo verificar: Ejecuta sudo systemctl status bind9 y comprueba que el estado sea active (running).
 
-# 2.Configurar las opciones globales:
+# 2. Configurar las opciones globales:
 
 Edita el archivo de opciones para configurar los reenviadores externos (por ejemplo, Cloudflare y Google):
 ```
@@ -62,7 +62,7 @@ Guarda el archivo (Ctrl + O, Enter) y sal (Ctrl + X).
 
 Cómo verificar: Ejecuta sudo named-checkconf sin que devuelva ningún error.
 
-# 3.Definir una zona local (Opcional):
+# 3. Definir una zona local (Opcional):
 
 Si deseas crear tu propio dominio local (ej. miservidor.local), edita el archivo de zonas locales:
 ```
@@ -77,7 +77,7 @@ zone "miservidor.local" {
 ```
 Guarda y cierra el archivo.
 
-# 4.Crear el archivo de registro de zona:
+# 4. Crear el archivo de registro de zona:
 
 Crea y edita el archivo de base de datos para tu dominio local basado en la plantilla por defecto:
 ```
@@ -99,7 +99,7 @@ www IN  A   192.168.1.50
 ```
 Cómo verificar: Valida la zona ejecutando sudo named-checkzone miservidor.local /etc/bind/db.miservidor.local (debe mostrar OK).
 
-# 5.Reiniciar y aplicar cambios:
+# 5. Reiniciar y aplicar cambios:
 
 Reinicia el servicio BIND9 para aplicar toda la configuración:
 ```
