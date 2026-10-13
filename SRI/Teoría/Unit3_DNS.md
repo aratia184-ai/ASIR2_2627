@@ -153,4 +153,4 @@ Aplica la nueva configuración ejecutando:
 ```
 sudo netplan apply
 ```
-Cómo verificar: Ejecuta resolvectl status y comprueba que en la sección de tu interfaz aparezca la IP de tu servidor DNS configurada correctamente.
+Cómo verificar: Ejecuta "resolvectl status" y comprueba que en la sección de tu interfaz aparezca la IP de tu servidor DNS configurada correctamente.
